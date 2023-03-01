@@ -1,47 +1,13 @@
-Microsoft Windows [Version 10.0.22000.1455]
-(c) Microsoft Corporation. All rights reserved.
+==> Install the bagpack wallet(it is a chrome extension).
+	> created a solana account 
+==> Downloaded Pre Built Windows Binary and Extracted it to local drive
 
-C:\WINDOWS\system32>cd C:\Solana\solana-release\bin
-
-C:\Solana\solana-release\bin>solana-keygen.exe
-solana-keygen 1.15.2 (src:dea65f48; feat:1211687720, client:SolanaLabs)
-Solana key generation utility
-
-USAGE:
-    solana-keygen.exe [OPTIONS] <SUBCOMMAND>
-
-OPTIONS:
-    -C, --config <FILEPATH>    Configuration file to use [default:
-                               C:\Users\angry\.config\solana\cli\config.yml]
-    -h, --help                 Print help information
-    -V, --version              Print version information
-
-SUBCOMMANDS:
-    grind      Grind for vanity keypairs
-    help       Print this message or the help of the given subcommand(s)
-    new        Generate new keypair file from a random seed phrase and optional BIP39 passphrase
-    pubkey     Display the pubkey from a keypair file
-    recover    Recover keypair from seed phrase and optional BIP39 passphrase
-    verify     Verify a keypair can sign and verify a message.
+==> created another wallet using cli and command :
 
 C:\Solana\solana-release\bin>solana-keygen new --force
-Generating a new keypair
 
-For added security, enter a BIP39 passphrase
+==> configured it to use DevNet :
 
-NOTE! This passphrase improves security of the recovery seed phrase NOT the
-keypair file itself, which is stored as insecure plain text
-
-BIP39 Passphrase (empty for none):
-Enter same passphrase again:
-
-Wrote new keypair to C:\Users\angry\.config\solana\id.json
-==========================================================================
-pubkey: E1znzZUPKKNy2cBNRebrC1qQip6ir7hYoDuf1cJpPVSm
-==========================================================================
-Save this seed phrase and your BIP39 passphrase to recover your new keypair:
-dragon retire sound disorder quality rely final ripple egg east usage jazz
-==========================================================================
 
 C:\Solana\solana-release\bin>solana config set --url https://api.devnet.solana.com
 Config File: C:\Users\angry\.config\solana\cli\config.yml
@@ -49,6 +15,9 @@ RPC URL: https://api.devnet.solana.com
 WebSocket URL: wss://api.devnet.solana.com/ (computed)
 Keypair Path: C:\Users\angry\.config\solana\id.json
 Commitment: confirmed
+
+
+==> Created a token using command:
 
 C:\Solana\solana-release\bin>spl-token create-token
 Creating token 8aW5dF5XXp2KM3eeBHG1KwMVxJvJVFgx2jrd7EBzRDh4 under program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA
@@ -65,6 +34,9 @@ USAGE:
 
 For more information try --help
 
+==> create didn't work because there is a gas fee involved in each transaction 
+	> so airdropped 1 sol 
+
 C:\Solana\solana-release\bin>solana balance
 0 SOL
 
@@ -78,19 +50,28 @@ Signature: 34hmJqF9nv19NCPLM6udRgYYrVATv3xoopxBoaCKumAnP2VBbaNTukmYwA43UT2ASashU
 C:\Solana\solana-release\bin>solana balance
 1 SOL
 
+==> re-executed create-token
+
 C:\Solana\solana-release\bin>spl-token create-token
 Creating token DmgLHvyxdcvpULUf1noBY9Ka3m9f325h5Jpx57zhMBP1 under program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA
 
 Address:  DmgLHvyxdcvpULUf1noBY9Ka3m9f325h5Jpx57zhMBP1
 Decimals:  9
 
+** decimals is essentially how many fragments our token can be divided into (here 9 means 10^9 fragments)
+
+
 Signature: 2Dwr42vFMkyckmXJyxSePxjFnx19YZmT9NC6EEJFuMHJLKj3FZt8HBWnrtT7upQxPEY7QTayeeoQmMnVtisAb4k3
+
+==> Created a bank account for cli wallet :
 
 
 C:\Solana\solana-release\bin>spl-token create-account DmgLHvyxdcvpULUf1noBY9Ka3m9f325h5Jpx57zhMBP1
 Creating account hDR4dsbbEeh9GxCWHvdMBPG4J782SqysrkGfQfP8WuT
 
 Signature: 23rgx6grqNNk8WJSK5UmssbKz7vR6iVcxibSke7jHmcUudaNZwFgYrWUS13HkU2i2vju5ZTyTfdyXfGypQ2Dadvs
+
+==> time to mint token 
 
 
 C:\Solana\solana-release\bin>spl-token mint DmgLHvyxdcvpULUf1noBY9Ka3m9f325h5Jpx57zhMBP1 1000
@@ -100,51 +81,7 @@ Minting 1000 tokens
 
 Signature: o3ndWoEASqAXrZc4UR3QQ5xiQhLcnjs6vN1Xg7btHxaa6C8RyxLerLL5924P344JkGLEZ34xjLhkzTCanRnrxYK
 
-
-C:\Solana\solana-release\bin>spl-tansfer DmgLHvyxdcvpULUf1noBY9Ka3m9f325h5Jpx57zhMBP1 2BDe4nW6ERmNw4tPCJHbM59BkEGHkptGaV48Ev34eLXf
-'spl-tansfer' is not recognized as an internal or external command,
-operable program or batch file.
-
-C:\Solana\solana-release\bin>spl-token tansfer DmgLHvyxdcvpULUf1noBY9Ka3m9f325h5Jpx57zhMBP1 2BDe4nW6ERmNw4tPCJHbM59BkEGHkptGaV48Ev34eLXf
-error: The subcommand 'tansfer' wasn't recognized
-        Did you mean 'transfer'?
-
-If you believe you received this message in error, try re-running with 'spl-token -- tansfer'
-
-USAGE:
-    spl-token [FLAGS] [OPTIONS] <SUBCOMMAND>
-
-For more information try --help
-
-C:\Solana\solana-release\bin>spl-token transfer DmgLHvyxdcvpULUf1noBY9Ka3m9f325h5Jpx57zhMBP1 2BDe4nW6ERmNw4tPCJHbM59BkEGHkptGaV48Ev34eLXf
-error: The following required arguments were not provided:
-    <RECIPIENT_WALLET_ADDRESS or RECIPIENT_TOKEN_ACCOUNT_ADDRESS>
-
-USAGE:
-    spl-token transfer [FLAGS] [OPTIONS] <TOKEN_MINT_ADDRESS> <TOKEN_AMOUNT> <RECIPIENT_WALLET_ADDRESS or RECIPIENT_TOKEN_ACCOUNT_ADDRESS>
-
-For more information try --help
-
-C:\Solana\solana-release\bin>spl-token transfer DmgLHvyxdcvpULUf1noBY9Ka3m9f325h5Jpx57zhMBP1 500 2BDe4nW6ERmNw4tPCJHbM59BkEGHkptGaV48Ev34eLXf
-Transfer 500 tokens
-  Sender: hDR4dsbbEeh9GxCWHvdMBPG4J782SqysrkGfQfP8WuT
-  Recipient: 2BDe4nW6ERmNw4tPCJHbM59BkEGHkptGaV48Ev34eLXf
-Error: "Error: The recipient address is not funded. Add `--allow-unfunded-recipient` to complete the transfer."
-
-C:\Solana\solana-release\bin>spl-token transfer DmgLHvyxdcvpULUf1noBY9Ka3m9f325h5Jpx57zhMBP1 500 2BDe4nW6ERmNw4tPCJHbM59BkEGHkptGaV48Ev34eLXf --allow-unfunded-recipient
-Transfer 500 tokens
-  Sender: hDR4dsbbEeh9GxCWHvdMBPG4J782SqysrkGfQfP8WuT
-  Recipient: 2BDe4nW6ERmNw4tPCJHbM59BkEGHkptGaV48Ev34eLXf
-  Recipient associated token account: 9iPwJPJTbsMseMkVxJ75QXBwqCcg6cyTvRsYq8LYRx9R
-Error: "Error: Recipient's associated token account does not exist. Add `--fund-recipient` to fund their account"
-
-C:\Solana\solana-release\bin>spl-token transfer DmgLHvyxdcvpULUf1noBY9Ka3m9f325h5Jpx57zhMBP1 500 2BDe4nW6ERmNw4tPCJHbM59BkEGHkptGaV48Ev34eLXf --allow-unfunded-recipient --fund-recipient
-Transfer 500 tokens
-  Sender: hDR4dsbbEeh9GxCWHvdMBPG4J782SqysrkGfQfP8WuT
-  Recipient: 2BDe4nW6ERmNw4tPCJHbM59BkEGHkptGaV48Ev34eLXf
-  Recipient associated token account: 9iPwJPJTbsMseMkVxJ75QXBwqCcg6cyTvRsYq8LYRx9R
-  Funding recipient: 9iPwJPJTbsMseMkVxJ75QXBwqCcg6cyTvRsYq8LYRx9R
-Error: Client(ClientError { request: Some(IsBlockhashValid), kind: Reqwest(reqwest::Error { kind: Request, url: Url { scheme: "https", cannot_be_a_base: false, username: "", password: None, host: Some(Domain("api.devnet.solana.com")), port: None, path: "/", query: None, fragment: None }, source: hyper::Error(Http2, Error { kind: Reset(StreamId(19), REFUSED_STREAM, Remote) }) }) })
+==> transferring tokens to my bagpack wallet 
 
 C:\Solana\solana-release\bin>spl-token transfer DmgLHvyxdcvpULUf1noBY9Ka3m9f325h5Jpx57zhMBP1 500 2BDe4nW6ERmNw4tPCJHbM59BkEGHkptGaV48Ev34eLXf --allow-unfunded-recipient --fund-recipient
 Transfer 500 tokens
@@ -153,6 +90,3 @@ Transfer 500 tokens
   Recipient associated token account: 9iPwJPJTbsMseMkVxJ75QXBwqCcg6cyTvRsYq8LYRx9R
 
 Signature: 5wV24iMLUvuZkPEVNeWehETj7AjzcV4jrqnPC2VeGSMKT5u8CAH51TCUKkfP6g2BffAE56g2vS9Ps8EHa33KD6cb
-
-
-C:\Solana\solana-release\bin>
